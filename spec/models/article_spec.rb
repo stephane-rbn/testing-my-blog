@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Article, type: :model do
-  subject { described_class.new(title: 'My first blog', content: 'Lorem ipsum', is_draft: false) }
+  subject { described_class.new(title: 'My first blog', content: 'Lorem ipsum') }
 
   it 'is valid with valid attributes' do
     expect(subject).to be_valid
