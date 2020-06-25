@@ -1,0 +1,13 @@
+require: rubocop-rspec
+
+Metrics/BlockLength:
+  ExcludedMethods: ['describe', 'context']
+
+RSpec/ContextWording:
+  Enabled: false
+
+Rspec/ExampleWording:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
