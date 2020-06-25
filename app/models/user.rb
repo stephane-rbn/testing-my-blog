@@ -6,6 +6,11 @@ class User < ApplicationRecord
 
   has_many :articles
 
-  validates :first_name, presence: true, length: { minimum: 1 }
-  validates :last_name, presence: true, length: { minimum: 2 }
+  validates :first_name,
+            presence: true,
+            allow_blank: false
+
+  validates :last_name,
+            presence: true,
+            allow_blank: false
 end
