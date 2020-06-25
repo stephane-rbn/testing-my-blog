@@ -33,6 +33,7 @@ end
 
 group :test do
   gem 'capybara'
+  gem 'database_cleaner-active_record'
   gem 'nyan-cat-formatter'
   gem 'shoulda-matchers'
 end
