@@ -69,9 +69,7 @@ RSpec.describe User, type: :model do
 
   context 'associations' do
     describe '#articles' do
-      it 'should have_many articles' do
-        expect(FactoryBot.create(:user)).to have_many(:articles)
-      end
+      it { expect(user).to have_many(:articles) }
     end
   end
 end
