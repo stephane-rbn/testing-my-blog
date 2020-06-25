@@ -78,6 +78,11 @@ GEM
     did_you_mean (1.4.0)
     diff-lcs (1.4.2)
     erubi (1.9.0)
+    factory_bot (6.0.2)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.0.0)
+      factory_bot (~> 6.0.0)
+      railties (>= 5.0.0)
     faker (2.13.0)
       i18n (>= 1.6, < 2)
     ffi (1.13.1)
@@ -234,6 +239,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   devise
   did_you_mean
+  factory_bot_rails
   faker
   jbuilder (~> 2.7)
   listen (~> 3.2)
