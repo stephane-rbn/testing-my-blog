@@ -38,6 +38,7 @@ group :test do
   gem 'nyan-cat-formatter'
   gem 'rails-controller-testing'
   gem 'shoulda-matchers'
+  gem 'simplecov', require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
