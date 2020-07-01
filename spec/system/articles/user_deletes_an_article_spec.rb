@@ -14,6 +14,7 @@ RSpec.describe 'Create Article', type: :system do
         expect(page).to have_content('Articles')
         sleep(1)
         click_link('Delete')
+        expect(page).to have_content('Article successfully deleted!')
       end
 
       scenario 'by visiting show page' do
@@ -21,6 +22,7 @@ RSpec.describe 'Create Article', type: :system do
         expect(page).to have_content(article.title)
         sleep(1)
         click_link('Delete')
+        expect(page).to have_content('Article successfully deleted!')
       end
     end
   end
