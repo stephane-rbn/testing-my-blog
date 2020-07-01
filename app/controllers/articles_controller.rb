@@ -29,6 +29,7 @@ class ArticlesController < ApplicationController
 
   def update
     if @article.update(article_params)
+      flash[:notice] = 'Article successfully edited!'
       redirect_to @article
     else
       flash[:alert] = 'Wrong submission. Try again!'
