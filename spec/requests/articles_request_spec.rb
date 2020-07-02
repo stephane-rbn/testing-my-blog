@@ -1,46 +1,66 @@
 require 'rails_helper'
 
-RSpec.describe "Articles", type: :request do
+RSpec.describe 'Articles', type: :request do
+  let(:user) { FactoryBot.create(:user) }
+  let(:article) { FactoryBot.create(:article, user: user) }
 
-  describe "GET /index" do
-    it "returns http success" do
-      get "/articles/index"
-      expect(response).to have_http_status(:success)
+  context 'on success' do
+    describe 'GET /articles' do
+      it 'should render index template' do
+        get '/articles'
+        expect(response).to render_template(:index)
+      end
+    end
+
+    describe 'GET /articles/new' do
+      it 'should render new template' do
+        sign_in user
+        get '/articles/new'
+        expect(response).to render_template(:new)
+      end
+    end
+
+    describe 'POST /articles' do
+      it 'returns http success' do
+        skip
+        get '/articles/create'
+        expect(response).to have_http_status(:success)
+      end
+    end
+
+    describe 'GET /articles/:id' do
+      it 'should render show template' do
+        sign_in user
+        get "/articles/#{article.id}"
+        expect(response).to render_template(:show)
+      end
+    end
+
+    describe 'PUT /articles/:id' do
+      it 'returns http success' do
+        skip
+        get '/articles/update'
+        expect(response).to have_http_status(:success)
+      end
+    end
+
+    describe 'DELETE /articles/:id' do
+      it 'should render show template' do
+        skip
+        sign_in user
+        delete "/articles/#{article.id}"
+        expect(response).to render_template(:index)
+      end
     end
   end
 
-  describe "GET /new" do
-    it "returns http success" do
-      get "/articles/new"
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET /create" do
-    it "returns http success" do
-      get "/articles/create"
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET /show" do
-    it "returns http success" do
-      get "/articles/show"
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET /update" do
-    it "returns http success" do
-      get "/articles/update"
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET /destroy" do
-    it "returns http success" do
-      get "/articles/destroy"
-      expect(response).to have_http_status(:success)
+  context 'on failure' do
+    describe 'GET /articles/new' do
+      it 'should render new session template' do
+        skip
+        get '/articles/new'
+        expect(response).to render_template(:new)
+      end
     end
   end
 
