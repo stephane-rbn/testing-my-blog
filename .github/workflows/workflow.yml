@@ -33,9 +33,7 @@ jobs:
           POSTGRES_PASSWORD: ${{ env.POSTGRES_PASSWORD }}
     steps:
       - uses: actions/checkout@v1
-      - uses: actions/setup-ruby@v1
-        with:
-          ruby-version: ${{ env.RUBY_VERSION }}
+      - uses: ruby/setup-ruby@v1
       - name: Install postgres client
         run: sudo apt-get install libpq-dev
       - name: Install dependencies
