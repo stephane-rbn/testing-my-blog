@@ -1,7 +1,8 @@
 env:
-  RUBY_VERSION: 2.7.0
   POSTGRES_USER: postgres
   POSTGRES_PASSWORD: postgres
+  DATABASE_USER: postgres
+  DATABASE_PASSWORD: postgres
   POSTGRES_DB: postgres
 
 name: Rails tests
