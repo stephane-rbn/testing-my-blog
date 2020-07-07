@@ -14,8 +14,6 @@ require 'rspec/rails'
 require 'capybara/rails'
 require 'capybara/rspec'
 
-Capybara.default_driver = :selenium_chrome_headless
-
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 # run as spec files by default. This means that files in spec/support that end
@@ -81,4 +79,14 @@ RSpec.configure do |config|
       with.library :rails
     end
   end
+
+  # config.before(:each) do
+  #   if  ENV['HEADLESS'] == 'true'
+  #     Capybara.current_driver = :selenium_chrome_headless
+  #   else
+  #     Capybara.current_driver = :selenium_chrome
+  #   end
+  # end
+
+  Capybara.current_driver = :selenium_chrome_headless
 end
