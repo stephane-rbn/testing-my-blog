@@ -14,13 +14,6 @@ require 'rspec/rails'
 require 'capybara/rails'
 require 'capybara/rspec'
 
-# Capybara.register_driver :chrome do |app|
-#   Capybara::Selenium::Driver.new app, browser: :chrome,
-#     options: Selenium::WebDriver::Chrome::Options.new(args: %w[headless disable-gpu])
-# end
-
-# Capybara.javascript_driver = :chrome
-
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 # run as spec files by default. This means that files in spec/support that end
@@ -93,37 +86,4 @@ RSpec.configure do |config|
       with.library :rails
     end
   end
-
-  # config.before(:each) do
-  #   if  ENV['HEADLESS'] == 'true'
-  #     Capybara.current_driver = :selenium_chrome_headless
-  #   else
-  #     Capybara.current_driver = :selenium_chrome
-  #   end
-  # end
-
-  # Capybara.current_driver = :selenium_chrome_headless
-  # driven_by :selenium, using: :chrome, options: { args: ["headless", "disable-gpu", "no-sandbox", "disable-dev-shm-usage"] }
-
-  # Capybara.register_driver :selenium_chrome_headless_docker_friendly do |app|
-  #   Capybara::Selenium::Driver.load_selenium
-  #   browser_options = ::Selenium::WebDriver::Chrome::Options.new
-  #   browser_options.args << '--headless'
-  #   browser_options.args << '--disable-gpu'
-  #   # Sandbox cannot be used inside unprivileged Docker container
-  #   browser_options.args << '--no-sandbox'
-  #   Capybara::Selenium::Driver.new(app, browser: :chrome, options: browser_options)
-  # end
-
-  # Capybara.javascript_driver = :selenium_chrome_headless_docker_friendly
-  # Capybara.current_driver = :selenium_chrome_headless_docker_friendly
-  # Capybara.default_driver = :selenium_chrome_headless_docker_friendly
-  # config.before(:each, type: :system) do
-  #   driven_by :rack_test
-  # end
-
-  # config.before(:each, type: :system, js: true) do
-  #   driven_by :selenium_chrome_headless
-  # end
-
 end
