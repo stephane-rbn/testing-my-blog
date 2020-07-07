@@ -18,14 +18,17 @@ jobs:
           POSTGRES_USER: ${{ env.DATABASE_USER }}
           POSTGRES_PASSWORD: ${{ env.DATABASE_PASSWORD }}
     steps:
-      - uses: actions/checkout@v1
-      - uses: ruby/setup-ruby@v1
-      - uses: borales/actions-yarn@v2.0.0
+      - name: Checkour repo
+        uses: actions/checkout@v1
+      - name: Setup ruby
+        uses: ruby/setup-ruby@v1
+      - name: Install yarn dependencies
+        uses: borales/actions-yarn@v2.0.0
         with:
           cmd: install
-      - name: Install postgres client
+      - name: Install postgres lib (gem dependency)
         run: sudo apt-get install libpq-dev
-      - name: Install dependencies
+      - name: Install gems
         run: |
           gem install bundler
           bundler install
@@ -34,8 +37,8 @@ jobs:
           wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
           sudo apt install ./google-chrome-stable_current_amd64.deb
       - name: Create database
-        run: |
-          bundler exec rails db:create RAILS_ENV=test
-          bundler exec rails db:migrate RAILS_ENV=test
-      - name: Run tests
+        run: bundler exec rails db:create RAILS_ENV=test
+      - name: Migrate databse
+        run: bundler exec rails db:migrate RAILS_ENV=test
+      - name: Run RSpec tests
         run: bundler exec rspec
