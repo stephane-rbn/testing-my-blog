@@ -21,7 +21,6 @@ group :development, :test do
   gem 'rspec-rails', '~> 4.0.0'
   gem 'rubocop-rspec', require: false
   gem 'webdrivers'
-  # gem 'capybara'
 end
 
 group :development do
