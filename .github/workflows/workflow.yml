@@ -18,7 +18,7 @@ jobs:
           POSTGRES_USER: ${{ env.DATABASE_USER }}
           POSTGRES_PASSWORD: ${{ env.DATABASE_PASSWORD }}
     steps:
-      - name: Checkour repo
+      - name: Checkout repo
         uses: actions/checkout@v1
       - name: Setup ruby
         uses: ruby/setup-ruby@v1
