@@ -33,8 +33,8 @@ jobs:
           bundler install
       - name: Install Google Chrome
         run: |
-          chmod +x ./.github/workflows/install_chrome.sh
-          ./.github/workflows/install_chrome.sh
+          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          sudo apt install ./google-chrome-stable_current_amd64.deb
       - name: Create database
         run: |
           bundler exec rails db:create RAILS_ENV=test
