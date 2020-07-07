@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Sign in feature', type: :feature do
+RSpec.describe 'Sign in feature', type: :system do
   let(:user) { FactoryBot.create(:user) }
 
   it 'should be valid with valid email and password' do

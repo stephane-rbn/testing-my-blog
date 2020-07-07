@@ -12,7 +12,6 @@ RSpec.describe 'Create Article', type: :system do
         skip
         visit articles_path
         expect(page).to have_content('Articles')
-
         click_link('Delete')
         expect(page).to have_content('Article successfully deleted!')
       end
@@ -20,7 +19,6 @@ RSpec.describe 'Create Article', type: :system do
       scenario 'by visiting show page' do
         visit article_path(article)
         expect(page).to have_content(article.title)
-
         click_link('Delete')
         expect(page).to have_content('Article successfully deleted!')
       end
@@ -32,10 +30,8 @@ RSpec.describe 'Create Article', type: :system do
       scenario 'by visiting the show page' do
         visit article_path(article)
         expect(page).to have_content(article.title)
-
         visit edit_article_path(article)
         expect(page).to have_content('You need to sign in or sign up before continuing.')
-
       end
     end
   end
