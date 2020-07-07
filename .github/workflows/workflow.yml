@@ -27,10 +27,10 @@ jobs:
           cmd: install
       - name: Install postgres lib (gem dependency)
         run: sudo apt-get install libpq-dev
-      - name: Install gems
-        run: |
-          gem install bundler
-          bundler install
+      - name: Install bundler
+        run: gem install bundler
+      - name: Install gems dependecies
+        run: bundler install
       - name: Install Google Chrome
         run: |
           wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
