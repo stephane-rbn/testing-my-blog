@@ -6,7 +6,7 @@ require 'simplecov'
 require "simplecov-console"
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
   SimpleCov::Formatter::HTMLFormatter,
-  SimpleCov::Formatter::Console
+  SimpleCov::Formatter::Console,
 ])
 # show all files
 SimpleCov::Formatter::Console.show_covered = true
@@ -47,12 +47,12 @@ rescue ActiveRecord::PendingMigrationError => e
 end
 RSpec.configure do |config|
   config.before(:each, type: :system) do
-		driven_by(:rack_test)
-	end
+    driven_by(:rack_test)
+  end
 
-	config.before(:each, type: :system, js: true) do
-		driven_by(:selenium_chrome_headless)
-	end
+  config.before(:each, type: :system, js: true) do
+    driven_by(:selenium_chrome_headless)
+  end
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   # config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.include FactoryBot::Syntax::Methods
@@ -87,11 +87,11 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+end
 
-  Shoulda::Matchers.configure do |config|
-    config.integrate do |with|
-      with.test_framework :rspec
-      with.library :rails
-    end
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
   end
 end
