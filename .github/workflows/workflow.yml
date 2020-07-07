@@ -5,6 +5,21 @@ env:
 name: Rails tests
 on: [push, pull_request]
 jobs:
+  rubocop:
+    name: Rubocop linting
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v1
+      - name: Setup ruby
+        uses: ruby/setup-ruby@v1
+      - name: Install bundler
+        run: gem install bundler
+      - name: Install gems dependecies
+        run: bundler install
+      - name: Run rubocop
+        run: bundler exec rubocop
+
   rspec-test:
     name: RSpec
     runs-on: ubuntu-18.04
