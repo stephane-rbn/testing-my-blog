@@ -2,8 +2,16 @@
 require 'spec_helper'
 
 # Uncomment these two lines to get the code coverage of the project
-# require 'simplecov'
-# SimpleCov.start 'rails'
+require 'simplecov'
+require "simplecov-console"
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
+  SimpleCov::Formatter::HTMLFormatter,
+  SimpleCov::Formatter::Console
+])
+# show all files
+SimpleCov::Formatter::Console.show_covered = true
+SimpleCov::Formatter::Console.max_rows = -1
+SimpleCov.start 'rails'
 
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../config/environment', __dir__)
