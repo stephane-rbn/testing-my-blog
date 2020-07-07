@@ -1,3 +1,6 @@
+inherit_from:
+  - .rubocop_airbnb.yml
+
 require: rubocop-rspec
 
 Metrics/BlockLength:
@@ -6,7 +9,7 @@ Metrics/BlockLength:
 RSpec/ContextWording:
   Enabled: false
 
-Rspec/ExampleWording:
+RSpec/ExampleWording:
   Enabled: false
 
 RSpec/MultipleExpectations:
