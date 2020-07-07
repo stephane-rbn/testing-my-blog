@@ -21,8 +21,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 4.0.0'
   gem 'rubocop-rspec', require: false
   gem 'webdrivers'
-  gem 'capybara'
-  gem 'selenium-webdriver'
+  # gem 'capybara'
 end
 
 group :development do
@@ -35,6 +34,7 @@ group :development do
 end
 
 group :test do
+  gem 'capybara'
   gem 'database_cleaner-active_record'
   gem 'nyan-cat-formatter'
   gem 'rails-controller-testing'
