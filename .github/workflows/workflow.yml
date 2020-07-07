@@ -1,0 +1,43 @@
+env:
+  DATABASE_USER: postgres
+  DATABASE_PASSWORD: postgres
+
+name: Rails tests
+on: [push, pull_request]
+jobs:
+  rspec-test:
+    name: RSpec
+    runs-on: ubuntu-18.04
+    services:
+      postgres:
+        image: postgres:latest
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_USER: ${{ env.DATABASE_USER }}
+          POSTGRES_PASSWORD: ${{ env.DATABASE_PASSWORD }}
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v1
+      - name: Setup ruby
+        uses: ruby/setup-ruby@v1
+      - name: Install yarn dependencies
+        uses: borales/actions-yarn@v2.0.0
+        with:
+          cmd: install
+      - name: Install postgres lib (gem dependency)
+        run: sudo apt-get install libpq-dev
+      - name: Install bundler
+        run: gem install bundler
+      - name: Install gems dependecies
+        run: bundler install
+      - name: Install Google Chrome
+        run: |
+          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          sudo apt install ./google-chrome-stable_current_amd64.deb
+      - name: Create database
+        run: bundler exec rails db:create RAILS_ENV=test
+      - name: Migrate databse
+        run: bundler exec rails db:migrate RAILS_ENV=test
+      - name: Run RSpec tests
+        run: bundler exec rspec

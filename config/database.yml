@@ -58,6 +58,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
+  host: localhost
   database: testing_my_blog_test
   user: <%= ENV['DATABASE_USER'] %>
   password: <%= ENV['DATABASE_PASSWORD'] %>
