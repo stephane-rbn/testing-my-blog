@@ -16,7 +16,7 @@ jobs:
       - name: Install bundler
         run: gem install bundler
       - name: Install gems dependecies
-        run: bundler install
+        run: bundle install --jobs 4
       - name: Run rubocop
         run: bundler exec rubocop
 
@@ -45,7 +45,7 @@ jobs:
       - name: Install bundler
         run: gem install bundler
       - name: Install gems dependecies
-        run: bundler install
+        run: bundle install --jobs 4
       - name: Install Google Chrome
         run: |
           wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
