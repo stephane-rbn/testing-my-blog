@@ -93,4 +93,12 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
+
+config.before(:each, type: :system) do
+  driven_by :rack_test
+end
+
+config.before(:each, type: :system, js: true) do
+  driven_by :selenium_chrome_headless
+end
 end

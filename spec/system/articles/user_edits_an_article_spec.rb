@@ -18,14 +18,14 @@ RSpec.describe 'Edit Article', type: :system do
         skip
         visit articles_path
         expect(page).to have_content('Articles')
-        sleep(1)
+
         click_link('Edit')
         edit_article(article)
       end
 
       scenario 'by visiting show page' do
         visit article_path(article)
-        sleep(1)
+
         click_link('Edit')
         edit_article(article)
       end
@@ -37,19 +37,19 @@ RSpec.describe 'Edit Article', type: :system do
       scenario 'by visiting the edit page' do
         visit edit_article_path(article)
         expect(page).to have_content('You need to sign in or sign up before continuing.')
-        sleep(1)
+
       end
 
       scenario 'by visiting home page' do
         visit articles_path
-        sleep(1)
+
         visit edit_article_path(article)
         expect(page).to have_content('You need to sign in or sign up before continuing.')
       end
 
       scenario 'by visiting show page' do
         visit article_path(article)
-        sleep(1)
+
         visit edit_article_path(article)
         expect(page).to have_content('You need to sign in or sign up before continuing.')
       end
@@ -60,18 +60,18 @@ RSpec.describe 'Edit Article', type: :system do
     expect(page).to have_current_path(edit_article_path(article))
     expect(page).to have_field('Title')
     expect(page).to have_field('Content')
-    sleep(1)
+
     expect(page).to have_field('article[title]', with: article.title)
     expect(page).to have_field('article[content]', with: article.content)
     within('form') do
       fill_in 'article[title]', with: 'How to edit an article with a robot'
       fill_in 'article[content]', with: 'This article is written by a robot'
     end
-    sleep(1)
+
     click_button 'Update Article'
     expect(page).to have_content('Article successfully edited!')
     expect(page).to have_content('How to edit an article with a robot')
     expect(page).to have_content('This article is written by a robot')
-    sleep(1)
+
   end
 end
