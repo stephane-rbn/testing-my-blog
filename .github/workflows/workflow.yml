@@ -1,9 +1,7 @@
 env:
-  # POSTGRES_USER: postgres
-  # POSTGRES_PASSWORD: postgres
   DATABASE_USER: postgres
   DATABASE_PASSWORD: postgres
-  POSTGRES_DB: postgres
+  # POSTGRES_DB: postgres
 
 name: Rails tests
 on: [push, pull_request]
