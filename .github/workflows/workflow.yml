@@ -33,8 +33,8 @@ jobs:
           bundler install
       - name: Install Google Chrome
         run: |
-          chmod +x ./scripts/InstallChrome.sh
-          ./scripts/InstallChrome.sh
+          chmod +x ./.github/workflows/install_chrome.sh
+          ./.github/workflows/install_chrome.sh
       - name: Create database
         run: |
           bundler exec rails db:create RAILS_ENV=test
