@@ -47,12 +47,9 @@ rescue ActiveRecord::PendingMigrationError => e
 end
 RSpec.configure do |config|
   config.before(:each, type: :system) do
-    driven_by(:rack_test)
+    driven_by(:rack_test) if ENV['CI'] # don't use brower under CI
   end
 
-  config.before(:each, type: :system, js: true) do
-    driven_by(:selenium_chrome_headless)
-  end
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   # config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.include FactoryBot::Syntax::Methods
