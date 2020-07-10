@@ -53,6 +53,7 @@ RSpec.describe Article, type: :model do
   context 'associations' do
     describe 'users' do
       it { expect(article).to belong_to(:user) }
+      it { expect(article).to have_many(:comments) }
     end
   end
 end

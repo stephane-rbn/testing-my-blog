@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :articles
+  has_many :comments
 
   validates :first_name,
             presence: true,
@@ -13,4 +14,8 @@ class User < ApplicationRecord
   validates :last_name,
             presence: true,
             allow_blank: false
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end
