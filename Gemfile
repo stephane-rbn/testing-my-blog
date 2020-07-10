@@ -36,6 +36,7 @@ end
 group :test do
   gem 'capybara'
   gem 'database_cleaner-active_record'
+  gem 'guard-rspec', require: false
   gem 'nyan-cat-formatter'
   gem 'rails-controller-testing'
   gem 'shoulda-matchers'
