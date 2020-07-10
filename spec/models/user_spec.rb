@@ -23,6 +23,12 @@ RSpec.describe User, type: :model do
     end
 
     describe '#first_name' do
+      it 'should validate length' do
+        user.first_name = Faker::Lorem.characters(number: 81)
+        expect(user).not_to be_valid
+        expect(user.errors.include?(:first_name)).to eq(true)
+      end
+
       it 'should not be valid without a first_name' do
         user.first_name = nil
         expect(user).not_to be_valid
@@ -37,6 +43,12 @@ RSpec.describe User, type: :model do
     end
 
     describe '#last_name' do
+      it 'should validate length' do
+        user.last_name = Faker::Lorem.characters(number: 81)
+        expect(user).not_to be_valid
+        expect(user.errors.include?(:last_name)).to eq(true)
+      end
+
       it 'should not be valid without a last_name' do
         user.last_name = nil
         expect(user).not_to be_valid

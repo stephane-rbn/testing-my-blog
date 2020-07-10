@@ -15,6 +15,12 @@ RSpec.describe Comment, type: :model do
     end
 
     describe '#content' do
+      it 'should validate content length' do
+        comment.content = Faker::Lorem.characters(number: 251)
+        expect(comment).not_to be_valid
+        expect(comment.errors.include?(:content)).to eq(true)
+      end
+
       it 'should not be valid without a content' do
         comment.content = nil
         expect(comment).not_to be_valid
@@ -26,6 +32,9 @@ RSpec.describe Comment, type: :model do
   context 'associations' do
     describe 'users' do
       it { expect(comment).to belong_to(:user) }
+    end
+
+    describe 'articles' do
       it { expect(comment).to belong_to(:article) }
     end
   end

@@ -9,11 +9,13 @@ class User < ApplicationRecord
 
   validates :first_name,
             presence: true,
-            allow_blank: false
+            allow_blank: false,
+            length: { maximum: 80 }
 
   validates :last_name,
             presence: true,
-            allow_blank: false
+            allow_blank: false,
+            length: { maximum: 80 }
 
   def full_name
     "#{first_name} #{last_name}"

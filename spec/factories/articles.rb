@@ -4,5 +4,9 @@ FactoryBot.define do
     content { Faker::ChuckNorris.fact }
     is_draft { true }
     user { FactoryBot.create(:user) }
+
+    factory :article_empty do
+      content { '' }
+    end
   end
 end
