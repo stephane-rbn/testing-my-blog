@@ -67,9 +67,18 @@ RSpec.describe User, type: :model do
     end
   end
 
+  context 'custom methods' do
+    describe '#full_name' do
+      it 'should return a valid full_name' do
+        expect(user.full_name).to eq("#{user.first_name} #{user.last_name}")
+      end
+    end
+  end
+
   context 'associations' do
     describe '#articles' do
       it { expect(user).to have_many(:articles) }
+      it { expect(user).to have_many(:comments) }
     end
   end
 end

@@ -7,3 +7,26 @@
   | <%= link_to 'Edit', edit_article_path(@article) %> |
   <%= link_to 'Delete', article_path(@article), method: :delete %>
 <% end %>
+
+<% if user_signed_in? %>
+  <h5>Write a comment:</h5>
+  <%= form_with(model: @comment, url: article_comments_path(@article), local: true) do |form| %>
+    <%= form.label :content %><br>
+    <%= form.text_field :content, required: true %><br>
+    <%= form.submit %>
+  <% end %>
+<% else %>
+  <p>Wanna write a comment? <%= link_to 'Sign in', new_user_session_path %> or <%= link_to 'sign up', new_user_registration_path %> now!</p>
+<% end %>
+
+<div style="max-width: 300px">
+  <h5>Comments</h5>
+  <% @article.comments.each do |comment| %>
+    <p><%= comment.content %></p>
+    <small>written by <%= comment.user.full_name %></small><br>
+    <% if user_signed_in? && comment.user == current_user %>
+      <%= link_to 'Delete comment', article_comment_path(@article, comment), method: :delete %>
+    <% end %>
+    <hr>
+  <% end %>
+</div>
