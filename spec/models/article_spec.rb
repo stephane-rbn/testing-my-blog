@@ -4,6 +4,15 @@ RSpec.describe Article, type: :model do
   let(:user) { FactoryBot.create(:user) }
   let(:article) { FactoryBot.create(:article, user: user) }
 
+  it 'should persist an article' do
+    Article.create(
+      title: Faker::Lorem.sentence(word_count: 10),
+      content: Faker::ChuckNorris.fact,
+      user: user
+    )
+    expect(Article.count).to eq(1)
+  end
+
   it 'should have a valid factory' do
     expect(FactoryBot.build(:article)).to be_valid
   end
