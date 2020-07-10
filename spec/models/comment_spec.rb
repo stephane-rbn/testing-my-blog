@@ -16,7 +16,7 @@ RSpec.describe Comment, type: :model do
 
     describe '#content' do
       it 'should validate content length' do
-        comment.content = Faker::Lorem.characters(number: 250)
+        comment.content = Faker::Lorem.characters(number: 251)
         expect(comment).not_to be_valid
         expect(comment.errors.include?(:content)).to eq(true)
       end

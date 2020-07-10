@@ -73,7 +73,7 @@ RSpec.describe Article, type: :model do
           content: Faker::ChuckNorris.fact,
           user: user
         )
-        other_article.comments.push(Comment.create(content: Faker::Lorem.sentence(word_count: 50), user: user))
+        other_article.comments.push(FactoryBot.create(:comment, user: user))
         other_article.save
         expect(Comment.count).to eq(1)
         expect(other_article.comments.count).to eq(1)
