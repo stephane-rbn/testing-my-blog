@@ -9,11 +9,6 @@ RSpec.describe 'Sign up', type: :system do
   end
 
   context '#email' do
-    it 'should be valid with valid email' do
-      sign_up_with user.email, user.first_name, user.last_name, user.password, user.password_confirmation
-      expect(page).to have_content('Sign out')
-    end
-
     it 'should not be valid with blank email' do
       sign_up_with '', user.first_name, user.last_name, user.password, user.password_confirmation
       expect(page).to have_content("Email can't be blank")
@@ -26,11 +21,6 @@ RSpec.describe 'Sign up', type: :system do
   end
 
   context '#first_name' do
-    it 'should be valid with valid first_name' do
-      sign_up_with user.email, user.first_name, user.last_name, user.password, user.password_confirmation
-      expect(page).to have_content('Sign out')
-    end
-
     it 'should not be valid with blank first_name' do
       sign_up_with user.email, '', user.last_name, user.password, user.password_confirmation
       expect(page).to have_content("First name can't be blank")
@@ -43,11 +33,6 @@ RSpec.describe 'Sign up', type: :system do
   end
 
   context '#last_name' do
-    it 'should be valid with valid last_name' do
-      sign_up_with user.email, user.first_name, user.last_name, user.password, user.password_confirmation
-      expect(page).to have_content('Sign out')
-    end
-
     it 'should not be valid with blank last_name' do
       sign_up_with user.email, user.first_name, '', user.password, user.password_confirmation
       expect(page).to have_content("Last name can't be blank")
@@ -60,11 +45,6 @@ RSpec.describe 'Sign up', type: :system do
   end
 
   context '#password' do
-    it 'should be valid with valid password' do
-      sign_up_with user.email, user.first_name, user.last_name, user.password, user.password_confirmation
-      expect(page).to have_content('Sign out')
-    end
-
     it 'should not be valid with blank password' do
       sign_up_with user.email, user.first_name, user.last_name, '', user.password_confirmation
       expect(page).to have_content("Password can't be blank")
@@ -77,11 +57,6 @@ RSpec.describe 'Sign up', type: :system do
   end
 
   context '#password_confirmation' do
-    it 'should be valid with valid password_confirmation' do
-      sign_up_with user.email, user.first_name, user.last_name, user.password, user.password_confirmation
-      expect(page).to have_content('Sign out')
-    end
-
     it 'should not be valid with blank password_confirmation' do
       sign_up_with user.email, user.first_name, user.last_name, user.password, ''
       expect(page).to have_content("Password confirmation doesn't match Password")
