@@ -1,2 +1,22 @@
 require:
   - rubocop-airbnb
+
+Metrics/LineLength:
+  AutoCorrect: true
+  Max: 100
+  IgnoredPatterns: ['(\A|\s)#']
+  AllowURI: true
+  Exclude:
+    - 'bin/bundle'
+
+RSpec/ContextWording:
+  Enabled: false
+
+RSpec/ExampleWording:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Enabled: false

@@ -3,8 +3,10 @@ require 'rails_helper'
 RSpec.describe 'Sign up', type: :system do
   let(:user) { FactoryBot.build(:user) }
 
+  # rubocop:disable Metrics/LineLength
   it 'should be valid with valid email, first_name, last_name, password and password_confirmation' do
     sign_up_with user.email, user.first_name, user.last_name, user.password, user.password_confirmation
+    # rubocop:enable Metrics/LineLength
     expect(page).to have_content('Sign out')
   end
 

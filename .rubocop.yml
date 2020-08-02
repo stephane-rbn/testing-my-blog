@@ -1,25 +1,10 @@
 inherit_from:
   - .rubocop_airbnb.yml
 
-require: rubocop-rspec
-
-Metrics/BlockLength:
-  ExcludedMethods: ['describe', 'context']
-
-RSpec/ContextWording:
-  Enabled: false
-
-RSpec/ExampleWording:
-  Enabled: false
-
-RSpec/MultipleExpectations:
-  Enabled: false
-
-RSpec/ExampleLength:
-  Enabled: false
-
-Metrics/LineLength:
-  Enabled: false
+require:
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rspec
 
 AllCops:
   Exclude:
